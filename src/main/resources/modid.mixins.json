@@ -4,7 +4,7 @@
   "package": "com.sh1penfire.cri_christmas",
   "compatibilityLevel": "JAVA_16",
   "client": [
-    "ExampleMixin"
+    "Christmas"
   ],
   "injectors": {
     "defaultRequire": 1
