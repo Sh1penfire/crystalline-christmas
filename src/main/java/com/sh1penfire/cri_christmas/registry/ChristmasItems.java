@@ -7,11 +7,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ChristmasItems {
-    public static final Item LOG_SNOWBALL_GUN = new Item(new Item.Settings().group(ItemGroup.COMBAT)){{
+    public static final Item WOOD_SNOWBALL_GUN = new Item(new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }};
 
     public static void load() {
-        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "log_snowball_gun"), LOG_SNOWBALL_GUN);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "wood_snowball_gun"), WOOD_SNOWBALL_GUN);
     }
 }

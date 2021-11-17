@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "crymas:items/log_snowball_gun"
+    "layer0": "crymas:items/wood_snowball_gun"
   }
 }
