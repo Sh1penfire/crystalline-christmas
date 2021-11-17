@@ -1,10 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.sh1penfire.cri_christmas",
+  "package": "net.fabricmc.example.mixin",
   "compatibilityLevel": "JAVA_16",
+  "mixins": [
+  ],
   "client": [
-    "Christmas"
+    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

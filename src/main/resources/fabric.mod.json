@@ -22,9 +22,6 @@
       "com.sh1penfire.cri_christmas.Christmas"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.11.3",
