@@ -1,22 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "SBB",
-    "LSL",
-    " RB"
+    "/SS",
+    "O/O",
+    " RS"
   ],
   "key": {
-    "L": {
-      "tag": "minecraft:logs"
-    },
-    "s": {
+    "/": {
       "item": "minecraft:stick"
     },
-    "B": {
+    "S": {
       "item": "minecraft:snowball"
     },
+    "O": {
+      "item": "minecraft:oak_log"
+    },
     "R": {
-      "item": "minecraft.redstone"
+      "item": "minecraft:redstone"
     }
   },
   "result": {
