@@ -1,8 +1,10 @@
 package com.sh1penfire.cri_christmas.item;
 
-import com.sh1penfire.cri_christmas.entity.projectile.HurtSnowball;
+import com.sh1penfire.cri_christmas.content.AmmoMap;
 import com.sh1penfire.cri_christmas.registry.ChristmasItems;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.item.SnowballItem;
@@ -17,6 +19,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
 
 public class SnowballLauncherItem extends RangedWeaponItem {
+
+    public AmmoMap AMMO_MAP = new AmmoMap();
 
     @Override
     public int getMaxUseTime(ItemStack stack) {
@@ -44,10 +48,13 @@ public class SnowballLauncherItem extends RangedWeaponItem {
         world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!world.isClient) {
             for (int i = 0; i < 3; i++) {
-                HurtSnowball snowballEntity = new HurtSnowball(world, user);
-                snowballEntity.setItem(snowballs);
-                snowballEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 3F);
-                world.spawnEntity(snowballEntity);
+                Entity ammoEntity = AMMO_MAP.getAmmo(snowballs.getItem()).get(user, world);
+                if(ammoEntity instanceof SnowballEntity snowballEntity){
+                    snowballEntity.setItem(snowballs);
+                    snowballEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 3F);
+                    world.spawnEntity(snowballEntity);
+                }
+
                 if(!cMode) snowballs.decrement(1);
                 if (snowballs.isEmpty() && !cMode) {
                     user.getInventory().removeOne(snowballs);
