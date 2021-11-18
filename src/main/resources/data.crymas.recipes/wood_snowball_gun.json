@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SBB",
+    "LSL",
+    " RB"
+  ],
+  "key": {
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "B": {
+      "item": "minecraft:snowball"
+    },
+    "R": {
+      "item": "minecraft.redstone"
+    }
+  },
+  "result": {
+    "item": "crymas:wood_snowball_gun",
+    "count": 1
+  }
+}
+
