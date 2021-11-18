@@ -1,0 +1,1 @@
+-candycane: fix sprite to look less like a worm and more high quality
