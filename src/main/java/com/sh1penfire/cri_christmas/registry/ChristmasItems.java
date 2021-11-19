@@ -1,17 +1,19 @@
 package com.sh1penfire.cri_christmas.registry;
 
 import com.sh1penfire.cri_christmas.Christmas;
-import com.sh1penfire.cri_christmas.entity.projectile.HurtSnowballEntity;
-import com.sh1penfire.cri_christmas.entity.projectile.SlimeGelEntity;
-import com.sh1penfire.cri_christmas.item.ChristmasFoodComponents;
-import com.sh1penfire.cri_christmas.item.SnowballLauncherItem;
-import com.sh1penfire.cri_christmas.item.WhipItem;
+import com.sh1penfire.cri_christmas.entity.projectile.*;
+import com.sh1penfire.cri_christmas.item.*;
 import com.sh1penfire.cri_christmas.util.interfaces.Prov;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.FireballEntity;
+import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.item.*;
+import net.minecraft.item.Item.Settings;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
@@ -24,11 +26,15 @@ public class ChristmasItems {
     public static final Item
 
     CANDY_CANE = new WhipItem(ToolMaterials.WOOD, 5, 1f, new Item.Settings().group(ItemGroup.COMBAT)){{}},
-    
+
+    CANDY_CANE_LANCE = new SwordItem(ToolMaterials.WOOD, 5, 1f, new Item.Settings().group(ItemGroup.COMBAT)){{}},
+
     //Slush Blaster Ammo
     ICEBALL = new SnowballItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(16)),
 
-    SLIMY_GEL = new SnowballItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(64));
+    SLIMY_GEL = new SlimeGelItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(64)),
+
+    CREAMY_GEL = new CreamyGelItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(64));
 
 
     public static Item
@@ -43,17 +49,27 @@ public class ChristmasItems {
 
     }};
 
-    public static void load() {
+    //block items
+    public static final BlockItem MILK_BLOCK = new BlockItem(ChristmasBlocks.MILK_BLOCK, new Settings().group(ItemGroup.BUILDING_BLOCKS));
+
+    public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "wood_snowball_gun"), WOOD_SNOWBALL_GUN);
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candy_cane"), CANDY_CANE);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candy_cane_lance"), CANDY_CANE_LANCE);
 
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "iceball"), ICEBALL);
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "slimy_gel"), SLIMY_GEL);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "creamy_gel"), CREAMY_GEL);
         //candy foods
 
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candycane"), CANDYCANE);
 
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candi"), CANDI);
+
+        //block items
+
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "milk_block"), MILK_BLOCK);
+
 
         WOOD_SNOWBALL_GUN.AMMO_MAP.putAmmo(Items.SNOWBALL, new Prov<>() {
             @Override
@@ -73,6 +89,21 @@ public class ChristmasItems {
             @Override
             public Entity get(PlayerEntity user, World world) {
                 return new SlimeGelEntity(world, user);
+            }
+        });
+
+        WOOD_SNOWBALL_GUN.AMMO_MAP.putAmmo(CREAMY_GEL, new Prov<>() {
+            @Override
+            public Entity get(PlayerEntity user, World world) {
+                return new FireGelEntity(world, user);
+            }
+        });
+
+        WOOD_SNOWBALL_GUN.AMMO_MAP.putAmmo(Items.FIRE_CHARGE, new Prov<>() {
+            @Override
+            public Entity get(PlayerEntity user, World world) {
+                SmallFireballEntity fireball = new SmallFireballEntity(world, user, 0, 0, 0);
+                return fireball;
             }
         });
     }

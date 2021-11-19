@@ -1,5 +1,6 @@
 package com.sh1penfire.cri_christmas;
 
+import com.sh1penfire.cri_christmas.registry.ChristmasBlocks;
 import com.sh1penfire.cri_christmas.registry.ChristmasItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.tinyremapper.extension.mixin.common.Logger;
@@ -11,6 +12,7 @@ public class Christmas implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ChristmasItems.load();
+        ChristmasItems.registerItems();
+        ChristmasBlocks.registerBlocks();
     }
 }

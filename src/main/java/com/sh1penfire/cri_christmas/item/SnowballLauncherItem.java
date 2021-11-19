@@ -3,11 +3,14 @@ package com.sh1penfire.cri_christmas.item;
 import com.sh1penfire.cri_christmas.content.AmmoMap;
 import com.sh1penfire.cri_christmas.registry.ChristmasItems;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.FireballEntity;
+import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.RangedWeaponItem;
-import net.minecraft.item.SnowballItem;
+import net.minecraft.item.*;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
@@ -21,6 +24,7 @@ import java.util.function.Predicate;
 public class SnowballLauncherItem extends RangedWeaponItem {
 
     public AmmoMap AMMO_MAP = new AmmoMap();
+    public double RELOAD = 0;
 
     @Override
     public int getMaxUseTime(ItemStack stack) {
@@ -28,7 +32,7 @@ public class SnowballLauncherItem extends RangedWeaponItem {
     }
 
     public final Predicate<ItemStack> SNOWBALL_PRED = (itemStack -> {
-        return itemStack.getItem() instanceof SnowballItem;
+        return itemStack.getItem() instanceof SnowballItem || itemStack.getItem() instanceof FireChargeItem;
     });
 
     public SnowballLauncherItem(Settings settings) {
@@ -45,7 +49,7 @@ public class SnowballLauncherItem extends RangedWeaponItem {
             else return TypedActionResult.pass(itemStack);
         }
 
-        world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!world.isClient) {
             for (int i = 0; i < 3; i++) {
                 Entity ammoEntity = AMMO_MAP.getAmmo(snowballs.getItem()).get(user, world);
@@ -53,6 +57,11 @@ public class SnowballLauncherItem extends RangedWeaponItem {
                     snowballEntity.setItem(snowballs);
                     snowballEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 3F);
                     world.spawnEntity(snowballEntity);
+                }
+                if(ammoEntity instanceof SmallFireballEntity fireballEntity){
+                    fireballEntity.setItem(snowballs);
+                    fireballEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 3F);
+                    world.spawnEntity(fireballEntity);
                 }
 
                 if(!cMode) snowballs.decrement(1);
@@ -79,13 +88,16 @@ public class SnowballLauncherItem extends RangedWeaponItem {
     }
 
     @Nullable
-    public ItemStack getSnowballs(PlayerEntity playerEntity){
-        for(int i = 0; i < playerEntity.getInventory().size(); ++i) {
-            ItemStack itemStack = playerEntity.getInventory().getStack(i);
-            if (SNOWBALL_PRED.test(itemStack)) {
-                return itemStack;
+    public ItemStack getSnowballs(LivingEntity livingEntity){
+        if(livingEntity instanceof PlayerEntity playerEntity) {
+            for (int i = 0; i < playerEntity.getInventory().size(); ++i) {
+                ItemStack itemStack = playerEntity.getInventory().getStack(i);
+                if (SNOWBALL_PRED.test(itemStack)) {
+                    return itemStack;
+                }
             }
+            return null;
         }
-        return null;
+        return new ItemStack(ChristmasItems.ICEBALL);
     }
 }

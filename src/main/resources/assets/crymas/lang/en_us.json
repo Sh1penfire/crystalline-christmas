@@ -1,9 +1,13 @@
 {
   "item.crymas.wood_snowball_gun": "Slush Blaster",
   "item.crymas.candy_cane":  "Candy Cane",
+  "item.crymas.candy_cane_lance":  "Candy Cane Lance",
 
   "item.crymas.iceball": "Iceball",
   "item.crymas.slimy_gel" : "Slimy Gel",
+  "item.crymas.creamy_gel" : "Creamy Gel",
 
-  "item.crymas.candycane":  "Candy Cane"
+  "item.crymas.candycane":  "Candy Cane",
+
+  "block.crymas.milk_block": "Coagulated Milk Block"
 }
