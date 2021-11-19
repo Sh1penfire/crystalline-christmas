@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireballEntity;
@@ -40,6 +41,10 @@ public class ChristmasItems {
 
     CREAMY_GEL = new CreamyGelItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(64));
 
+    //Armors
+    public static ArmorItem FROST_BOOTS = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT)){{
+
+    }};
 
     public static Item
 
@@ -89,6 +94,9 @@ public class ChristmasItems {
         //block items
 
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "milk_block"), MILK_BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candycane_block_red"), CANDYCANE_BLOCK_RED);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candycane_block_green"), CANDYCANE_BLOCK_GREEN);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candycane_block_yellow"), CANDYCANE_BLOCK_YELLOW);
 
 
         WOOD_SNOWBALL_GUN.AMMO_MAP.putAmmo(Items.SNOWBALL, new Prov<>() {

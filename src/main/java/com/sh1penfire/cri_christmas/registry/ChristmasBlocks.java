@@ -32,7 +32,7 @@ public class ChristmasBlocks {
         Registry.register(Registry.BLOCK, new Identifier(Christmas.MOD_ID, "milk_block"), MILK_BLOCK);
 
         Registry.register(Registry.BLOCK, new Identifier(Christmas.MOD_ID, "candycane_block_red"), CANDYCANE_BLOCK_RED);
-        Registry.register(Registry.BLOCK, new Identifier(Christmas.MOD_ID, "candycane_block_yellow"), CANDYCANE_BLOCK_GREEN);
-        Registry.register(Registry.BLOCK, new Identifier(Christmas.MOD_ID, "candycane_block_green"), CANDYCANE_BLOCK_YELLOW);
+        Registry.register(Registry.BLOCK, new Identifier(Christmas.MOD_ID, "candycane_block_green"), CANDYCANE_BLOCK_GREEN);
+        Registry.register(Registry.BLOCK, new Identifier(Christmas.MOD_ID, "candycane_block_yellow"), CANDYCANE_BLOCK_YELLOW);
     }
 }
