@@ -47,7 +47,9 @@ public class ChristmasItems {
     CREAMY_GEL = new CreamyGelItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(64));
 
     //resources
-    public static Item SLUSH_SHARD = registerItem("slush_shard", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
+    public static Item SLUSH_SHARD = registerItem("slush_shard", new Item(new Item.Settings().group(ItemGroup.MATERIALS))),
+
+    ICY_AMALGAMATE = registerGelItem("icy_amalgamate", new Item(new Settings().group(ItemGroup.MATERIALS)));
 
     //Armors
     public static ArmorItem FROST_BOOTS = new ArmorItem(FROST, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT)){{

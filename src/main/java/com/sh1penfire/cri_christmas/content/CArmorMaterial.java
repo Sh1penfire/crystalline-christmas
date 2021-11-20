@@ -56,21 +56,21 @@ public class CArmorMaterial implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return null;
+        return repairIng;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public float getToughness() {
-        return 0;
+        return toughness;
     }
 
     @Override
     public float getKnockbackResistance() {
-        return 0;
+        return KR;
     }
 }

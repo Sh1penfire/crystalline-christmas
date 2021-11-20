@@ -13,9 +13,7 @@ public class AmmoMap {
 
     };
 
-    private Prov<PlayerEntity, World, Entity>[] ENTITY_MAP = new Prov[]{
-
-    };
+    private Prov<PlayerEntity, World, Entity>[] ENTITY_MAP = new Prov[]{};
 
     public void putAmmo(Item ammoProvider, Prov<PlayerEntity, World, Entity> entityProvider){
         AMMO_MAP = Arrays.copyOf(AMMO_MAP, AMMO_MAP.length + 1);
