@@ -42,6 +42,17 @@ public class ChristmasItems {
     //Armors
     public static ArmorItem FROST_BOOTS = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT)){{
 
+    }},
+
+    FROST_LEGGINGS = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT)){{
+
+    }},
+
+    FROST_VEST = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT)){{
+
+    }},
+    FROST_HELM = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT)){{
+
     }};
 
     public static Item
@@ -83,10 +94,16 @@ public class ChristmasItems {
 
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candi"), CANDI);
 
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "frost_boots"), FROST_BOOTS);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "frost_leggings"), FROST_LEGGINGS);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "frost_vest"), FROST_VEST);
+        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "frost_helm"), FROST_HELM);
+
         //block items
 
         MODDEDBLOCK_ITEMS.forEach(i -> Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, i.registerName), i.blockItem));
 
+        //blaster ammoes
 
         WOOD_SNOWBALL_GUN.AMMO_MAP.putAmmo(Items.SNOWBALL, new Prov<>() {
             @Override
