@@ -1,1 +1,2 @@
--candycane: fix sprite to look less like a worm and more high quality
+-slush shards: actually just a placeholder sprite, because I don’t really like default missing texture .-.
+-icy amalgamate: a, looks a bit to noisy in general
