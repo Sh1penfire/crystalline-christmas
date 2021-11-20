@@ -4,25 +4,23 @@ import com.sh1penfire.cri_christmas.Christmas;
 import com.sh1penfire.cri_christmas.entity.projectile.*;
 import com.sh1penfire.cri_christmas.item.*;
 import com.sh1penfire.cri_christmas.util.interfaces.Prov;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.Item.Settings;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChristmasItems {
+
+    public static List<ItemBlockEntry> MODDEDBLOCK_ITEMS = new ArrayList<ItemBlockEntry>();
     //slush weapons
     public static final SnowballLauncherItem WOOD_SNOWBALL_GUN = new SnowballLauncherItem(new Item.Settings().group(ItemGroup.COMBAT)){{
 
@@ -67,13 +65,7 @@ public class ChristmasItems {
     }};
 
     //block items
-    public static final BlockItem MILK_BLOCK = new BlockItem(ChristmasBlocks.MILK_BLOCK, new Settings().group(ItemGroup.BUILDING_BLOCKS)),
-
-    CANDYCANE_BLOCK_RED = new BlockItem(ChristmasBlocks.CANDYCANE_BLOCK_RED, new Settings().group(ItemGroup.BUILDING_BLOCKS)),
-
-    CANDYCANE_BLOCK_GREEN = new BlockItem(ChristmasBlocks.CANDYCANE_BLOCK_GREEN, new Settings().group(ItemGroup.BUILDING_BLOCKS)),
-
-    CANDYCANE_BLOCK_YELLOW = new BlockItem(ChristmasBlocks.CANDYCANE_BLOCK_YELLOW, new Settings().group(ItemGroup.BUILDING_BLOCKS));
+    public static final BlockItem MILK_BLOCK = new BlockItem(ChristmasBlocks.MILK_BLOCK, new Settings().group(ItemGroup.BUILDING_BLOCKS));
 
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "wood_snowball_gun"), WOOD_SNOWBALL_GUN);
@@ -93,10 +85,7 @@ public class ChristmasItems {
 
         //block items
 
-        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "milk_block"), MILK_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candycane_block_red"), CANDYCANE_BLOCK_RED);
-        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candycane_block_green"), CANDYCANE_BLOCK_GREEN);
-        Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "candycane_block_yellow"), CANDYCANE_BLOCK_YELLOW);
+        MODDEDBLOCK_ITEMS.forEach(i -> Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, i.registerName), i.blockItem));
 
 
         WOOD_SNOWBALL_GUN.AMMO_MAP.putAmmo(Items.SNOWBALL, new Prov<>() {
@@ -134,5 +123,14 @@ public class ChristmasItems {
                 return fireball;
             }
         });
+    }
+
+    public static class ItemBlockEntry{
+        public String registerName;
+        public BlockItem blockItem;
+        public ItemBlockEntry(String path, BlockItem item){
+            registerName = path;
+            blockItem = item;
+        }
     }
 }
