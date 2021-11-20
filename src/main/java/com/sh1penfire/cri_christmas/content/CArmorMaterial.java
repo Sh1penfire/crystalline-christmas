@@ -10,7 +10,7 @@ import net.minecraft.sound.SoundEvents;
 
 public class CArmorMaterial implements ArmorMaterial {
     //public final static CArmorMaterial frost = new CArmorMaterial();
-    private final int durability, armorValue;
+    private final int[] durability, armorValue;
 
     private final float toughness, KR;
 
@@ -19,7 +19,7 @@ public class CArmorMaterial implements ArmorMaterial {
     public final String name;
     private final Ingredient repairIng;
 
-    public CArmorMaterial(int durability, int armorValue, float toughness, float KR, int enchantability, SoundEvent equipSound, String name, Ingredient repairIngrediant){
+    public CArmorMaterial(int[] durability, int[] armorValue, float toughness, float KR, int enchantability, SoundEvent equipSound, String name, Ingredient repairIngrediant){
         this.durability = durability;
         this.armorValue = armorValue;
         this.toughness = toughness;
@@ -32,12 +32,12 @@ public class CArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return durability;
+        return durability[slot.getEntitySlotId()];
     }
 
     @Override
     public int getProtectionAmount(EquipmentSlot slot) {
-        return armorValue;
+        return armorValue[slot.getEntitySlotId()];
     }
 
     @Override
