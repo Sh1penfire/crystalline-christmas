@@ -11,6 +11,9 @@ import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.Item.Settings;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
@@ -39,19 +42,64 @@ public class ChristmasItems {
 
     CREAMY_GEL = new CreamyGelItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(64));
 
+
+    static ArmorMaterial FROZEN = new ArmorMaterial() {
+        public int[] protValues = {2, 6, 7, 3};
+        @Override
+        public int getDurability(EquipmentSlot slot) {
+            return 29;
+        }
+
+        @Override
+        public int getProtectionAmount(EquipmentSlot slot) {
+            //armor values starts at 3rd slot in EquipmentSlot enum
+            return protValues[slot.getEntitySlotId()];
+        }
+
+        @Override
+        public int getEnchantability() {
+            return 14;
+        }
+
+        @Override
+        public SoundEvent getEquipSound() {
+            return SoundEvents.ITEM_SPYGLASS_STOP_USING;
+        }
+
+        @Override
+        public Ingredient getRepairIngredient() {
+            return null;
+        }
+
+        @Override
+        public String getName() {
+            return "frost";
+        }
+
+        @Override
+        public float getToughness() {
+            return 0;
+        }
+
+        @Override
+        public float getKnockbackResistance() {
+            return 0;
+        }
+    };
+
     //Armors
-    public static ArmorItem FROST_BOOTS = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT)){{
+    public static ArmorItem FROST_BOOTS = new ArmorItem(FROZEN, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }},
 
-    FROST_LEGGINGS = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT)){{
+    FROST_LEGGINGS = new ArmorItem(FROZEN, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }},
 
-    FROST_VEST = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT)){{
+    FROST_VEST = new ArmorItem(FROZEN, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }},
-    FROST_HELM = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT)){{
+    FROST_HELM = new ArmorItem(FROZEN, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }};
 
