@@ -1,5 +1,6 @@
 package com.sh1penfire.cri_christmas.content;
 
+import com.sh1penfire.cri_christmas.registry.ChristmasItems;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorMaterials;
@@ -9,8 +10,11 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
 public class CArmorMaterial implements ArmorMaterial {
-    //public final static CArmorMaterial frost = new CArmorMaterial();
-    private final int[] durability, armorValue;
+    public final static CArmorMaterial FROST = new CArmorMaterial(29, new int[]{2, 6, 7, 3}, 3, 0.3f, 12, SoundEvents.ITEM_SPYGLASS_STOP_USING, "frost", Ingredient.ofItems(ChristmasItems.SLUSH_SHARD));
+
+    public static int[] baseDurability = {13, 15, 16, 11};
+    private final int durabilityMultiplier;
+    public static int[] armorValue;
 
     private final float toughness, KR;
 
@@ -19,8 +23,8 @@ public class CArmorMaterial implements ArmorMaterial {
     public final String name;
     private final Ingredient repairIng;
 
-    public CArmorMaterial(int[] durability, int[] armorValue, float toughness, float KR, int enchantability, SoundEvent equipSound, String name, Ingredient repairIngrediant){
-        this.durability = durability;
+    public CArmorMaterial(int durability, int[] armorValue, float toughness, float KR, int enchantability, SoundEvent equipSound, String name, Ingredient repairIngrediant){
+        this.durabilityMultiplier = durability;
         this.armorValue = armorValue;
         this.toughness = toughness;
         this.KR = KR;
@@ -32,7 +36,7 @@ public class CArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return durability[slot.getEntitySlotId()];
+        return baseDurability[slot.getEntitySlotId()] * durabilityMultiplier;
     }
 
     @Override

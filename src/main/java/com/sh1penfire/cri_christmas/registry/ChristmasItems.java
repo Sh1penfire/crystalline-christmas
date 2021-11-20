@@ -4,6 +4,7 @@ import com.sh1penfire.cri_christmas.Christmas;
 import com.sh1penfire.cri_christmas.entity.projectile.*;
 import com.sh1penfire.cri_christmas.item.*;
 import com.sh1penfire.cri_christmas.util.interfaces.Prov;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,9 +22,12 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.sh1penfire.cri_christmas.content.CArmorMaterial.FROST;
+
 public class ChristmasItems {
 
     public static List<ItemBlockEntry> MODDEDBLOCK_ITEMS = new ArrayList<ItemBlockEntry>();
+    public static List<ItemEntry> MOD_ITEMS = new ArrayList<ItemEntry>();
     //slush weapons
     public static final SnowballLauncherItem WOOD_SNOWBALL_GUN = new SnowballLauncherItem(new Item.Settings().group(ItemGroup.COMBAT)){{
 
@@ -42,64 +46,23 @@ public class ChristmasItems {
 
     CREAMY_GEL = new CreamyGelItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(64));
 
-
-    static ArmorMaterial FROZEN = new ArmorMaterial() {
-        public int[] protValues = {2, 6, 7, 3};
-        @Override
-        public int getDurability(EquipmentSlot slot) {
-            return 29;
-        }
-
-        @Override
-        public int getProtectionAmount(EquipmentSlot slot) {
-            //armor values starts at 3rd slot in EquipmentSlot enum
-            return protValues[slot.getEntitySlotId()];
-        }
-
-        @Override
-        public int getEnchantability() {
-            return 14;
-        }
-
-        @Override
-        public SoundEvent getEquipSound() {
-            return SoundEvents.ITEM_SPYGLASS_STOP_USING;
-        }
-
-        @Override
-        public Ingredient getRepairIngredient() {
-            return null;
-        }
-
-        @Override
-        public String getName() {
-            return "frost";
-        }
-
-        @Override
-        public float getToughness() {
-            return 0;
-        }
-
-        @Override
-        public float getKnockbackResistance() {
-            return 0;
-        }
-    };
+    //resources
+    public static Item SLUSH_SHARD = registerItem("slush_shard", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
 
     //Armors
-    public static ArmorItem FROST_BOOTS = new ArmorItem(FROZEN, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT)){{
+    public static ArmorItem FROST_BOOTS = new ArmorItem(FROST, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }},
 
-    FROST_LEGGINGS = new ArmorItem(FROZEN, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT)){{
+    FROST_LEGGINGS = new ArmorItem(FROST, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }},
 
-    FROST_VEST = new ArmorItem(FROZEN, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT)){{
+    FROST_VEST = new ArmorItem(FROST, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }},
-    FROST_HELM = new ArmorItem(FROZEN, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT)){{
+
+    FROST_HELM = new ArmorItem(FROST, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT)){{
 
     }};
 
@@ -147,9 +110,12 @@ public class ChristmasItems {
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "frost_vest"), FROST_VEST);
         Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, "frost_helm"), FROST_HELM);
 
-        //block items
+        //items
+        MOD_ITEMS.forEach(i -> Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, i.registerName), i.item));
 
+        //block items
         MODDEDBLOCK_ITEMS.forEach(i -> Registry.register(Registry.ITEM, new Identifier(Christmas.MOD_ID, i.registerName), i.blockItem));
+
 
         //blaster ammoes
 
@@ -197,5 +163,25 @@ public class ChristmasItems {
             registerName = path;
             blockItem = item;
         }
+    }
+
+    public static class ItemEntry{
+        public String registerName;
+        public Item item;
+        public ItemEntry(String path, Item item){
+            this.registerName = path;
+            this.item = item;
+        }
+    }
+
+    public static Item registerItem(String registerPath, Item item){
+        MOD_ITEMS.add(new ItemEntry(registerPath, item));
+        return item;
+    }
+
+    //does nothing currently, planning on making it auto add to a specific specified ammo map
+    public static Item registerGelItem(String registerPath, Item item){
+        MOD_ITEMS.add(new ItemEntry(registerPath, item));
+        return item;
     }
 }
