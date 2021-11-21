@@ -2,6 +2,7 @@ package com.sh1penfire.cri_christmas.entity.projectile;
 
 import com.google.common.base.MoreObjects;
 import com.sh1penfire.cri_christmas.entity.CEntityType;
+import com.sh1penfire.cri_christmas.registry.ChristmasItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 public class SoulstrikenArrowEntity extends PersistentProjectileEntity {
 
     public SoulstrikenArrowEntity(EntityType<? extends SoulstrikenArrowEntity> entityType, World world) {
-        super((EntityType<? extends PersistentProjectileEntity>)entityType, world);
+        super(entityType, world);
     }
 
     public SoulstrikenArrowEntity(World world, LivingEntity owner) {
@@ -40,7 +41,7 @@ public class SoulstrikenArrowEntity extends PersistentProjectileEntity {
 
     @Override
     protected ItemStack asItemStack() {
-        return new ItemStack(Items.SPECTRAL_ARROW);
+        return new ItemStack(ChristmasItems.SOUL_ARROW);
     }
 
     @Override
