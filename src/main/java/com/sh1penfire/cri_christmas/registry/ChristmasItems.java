@@ -55,7 +55,9 @@ public class ChristmasItems {
     //resources
     public static Item SLUSH_SHARD = registerItem("slush_shard", new Item(new Item.Settings().group(ItemGroup.MATERIALS))),
 
-    ICY_AMALGAMATE = registerGelItem("icy_amalgamate", new Item(new Settings().group(ItemGroup.MATERIALS)));
+    ICY_AMALGAMATE = registerGelItem("icy_amalgamate", new Item(new Settings().group(ItemGroup.MATERIALS))),
+
+    ICE_CORE = registerGelItem("ice_core", new Item(new Settings().group(ItemGroup.MATERIALS)));
 
     //Armors
     public static ArmorItem FROST_BOOTS = new ArmorItem(FROST, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT)){{
@@ -92,7 +94,9 @@ public class ChristmasItems {
 
     CANDI = new Item(new Item.Settings().group(ItemGroup.FOOD).maxCount(64).food(ChristmasFoodComponents.CANDYCANE)){{
 
-    }};
+    }},
+
+    SNOW_CONE = registerItem("snow_cone", new Item(foodSettings(ChristmasFoodComponents.SNOW_CONE)));
 
     //block items
     public static final BlockItem MILK_BLOCK = new BlockItem(ChristmasBlocks.MILK_BLOCK, new Settings().group(ItemGroup.BUILDING_BLOCKS));
@@ -205,5 +209,9 @@ public class ChristmasItems {
     public static Item registerGelItem(String registerPath, Item item){
         MOD_ITEMS.add(new ItemEntry(registerPath, item));
         return item;
+    }
+
+    public static Item.Settings foodSettings(FoodComponent comp){
+        return new Settings().group(ItemGroup.FOOD).maxCount(64).food(comp);
     }
 }
