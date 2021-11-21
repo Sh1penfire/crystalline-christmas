@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "BSB",
+    " B "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:snowball"
+    },
+    "B": {
+      "item": "minecraft:bread"
+    }
+  },
+  "result": {
+    "item": "crymas:snow_cone",
+    "count": 24
+  }
+}
+

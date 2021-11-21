@@ -34,6 +34,8 @@ public class ChristmasBlocks {
         defaults()
     ),
 
+    SLUSH_SHARD = registerBlock("slush_shards", new Block(FabricBlockSettings.of(Material.WOOL).breakByHand(true).hardness(1.25f).resistance(15).sounds(BlockSoundGroup.BONE)), defaults()),
+
     CANDYCANE_BLOCK_RED = registerBlock("candycane_block_red",
         new Block(FabricBlockSettings.of(Material.WOOD).breakByHand(true).hardness(1.25f).resistance(15).sounds(BlockSoundGroup.BONE)),
         defaults()
