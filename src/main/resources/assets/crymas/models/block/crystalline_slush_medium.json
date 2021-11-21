@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "crymas:items/crystalline_slush_medium"
+    "cross": "crymas:blocks/crystalline_slush_medium"
   }
 }

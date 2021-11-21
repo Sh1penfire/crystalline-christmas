@@ -35,9 +35,9 @@ public class ChristmasBlocks {
 
     SLUSH_SHARD = registerBlock("slush_shards", new SlushShard(7, 3, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
 
-    CRYSTALLINE_SLUSH_LARGE = registerBlock("slush_shards_large", new SlushShard(5, 3, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
+    CRYSTALLINE_SLUSH_LARGE = registerBlock("crystalline_slush_large", new SlushShard(5, 3, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
 
-    CRYSTALLINE_SLUSH_MEDIUM = registerBlock("slush_shards_medium", new SlushShard(4, 3, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
+    CRYSTALLINE_SLUSH_MEDIUM = registerBlock("crystalline_slush_medium", new SlushShard(4, 3, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
 
     CRYSTALLINE_SLUSH_SMALL = registerBlock("crystalline_slush_small", new SlushShard(3, 4, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
 

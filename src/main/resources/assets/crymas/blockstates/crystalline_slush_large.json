@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "crymas:block/crystalline_slush_large",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "crymas:block/crystalline_slush_large",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crymas:block/crystalline_slush_large",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "crymas:block/crystalline_slush_large",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "crymas:block/crystalline_slush_large"
+    },
+    "facing=west": {
+      "model": "crymas:block/crystalline_slush_large",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

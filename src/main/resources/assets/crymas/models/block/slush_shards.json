@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "crymas:items/slush_shards"
+    "cross": "crymas:blocks/slush_shards"
   }
 }
