@@ -46,6 +46,12 @@ public class ChristmasItems {
 
     CREAMY_GEL = new CreamyGelItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(64));
 
+    //ammo for bows, currently dosn't work so use the slush blaster instead
+    public static final ArrowItem
+        SOUL_ARROW = registerArrowItem("soulstriken_arrow", new SoulstrikenArrow(new Item.Settings().group(ItemGroup.COMBAT))),
+        JOULTY_ARROW = registerArrowItem("joulty_arrow", new SoulstrikenArrow(new Item.Settings().group(ItemGroup.COMBAT))),
+        FRAG_ARROW = registerArrowItem("fragmentation_arrow", new SoulstrikenArrow(new Item.Settings().group(ItemGroup.COMBAT)));
+    ;
     //resources
     public static Item SLUSH_SHARD = registerItem("slush_shard", new Item(new Item.Settings().group(ItemGroup.MATERIALS))),
 
@@ -153,7 +159,16 @@ public class ChristmasItems {
             @Override
             public Entity get(PlayerEntity user, World world) {
                 SmallFireballEntity fireball = new SmallFireballEntity(world, user, 0, 0, 0);
+                fireball.setPos(fireball.getX(), user.getEyeY(), fireball.getZ());
                 return fireball;
+            }
+        });
+
+        WOOD_SNOWBALL_GUN.AMMO_MAP.putAmmo(SOUL_ARROW, new Prov<>() {
+            @Override
+            public Entity get(PlayerEntity user, World world) {
+                SoulstrikenArrowEntity arrow = new SoulstrikenArrowEntity(world, user);
+                return arrow;
             }
         });
     }
@@ -177,6 +192,11 @@ public class ChristmasItems {
     }
 
     public static Item registerItem(String registerPath, Item item){
+        MOD_ITEMS.add(new ItemEntry(registerPath, item));
+        return item;
+    }
+
+    public static ArrowItem registerArrowItem(String registerPath, ArrowItem item){
         MOD_ITEMS.add(new ItemEntry(registerPath, item));
         return item;
     }

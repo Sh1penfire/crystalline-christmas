@@ -5,6 +5,7 @@ import com.sh1penfire.cri_christmas.registry.ChristmasItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.entity.projectile.thrown.SnowballEntity;
@@ -32,7 +33,7 @@ public class SnowballLauncherItem extends RangedWeaponItem {
     }
 
     public final Predicate<ItemStack> SNOWBALL_PRED = (itemStack -> {
-        return itemStack.getItem() instanceof SnowballItem || itemStack.getItem() instanceof FireChargeItem;
+        return itemStack.getItem() instanceof SnowballItem || itemStack.getItem() instanceof FireChargeItem || itemStack.getItem() instanceof ArrowItem;
     });
 
     public SnowballLauncherItem(Settings settings) {
@@ -62,6 +63,10 @@ public class SnowballLauncherItem extends RangedWeaponItem {
                     fireballEntity.setItem(snowballs);
                     fireballEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 3F);
                     world.spawnEntity(fireballEntity);
+                }
+                if(ammoEntity instanceof ArrowEntity arrowEntity){
+                    arrowEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 3F);
+                    world.spawnEntity(arrowEntity);
                 }
 
                 if(!cMode) snowballs.decrement(1);
