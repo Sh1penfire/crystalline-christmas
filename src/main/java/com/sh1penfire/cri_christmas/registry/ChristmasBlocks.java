@@ -69,7 +69,6 @@ public class ChristmasBlocks {
     public static void registerBlocks(){
         MOD_BLOCKS.forEach(b -> {
             Registry.register(Registry.BLOCK, new Identifier(Christmas.MOD_ID, b.registerName), b.blockEntry);
-
         });
     }
 
