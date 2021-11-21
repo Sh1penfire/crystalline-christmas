@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "crymas:block/slush_shards",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "crymas:block/slush_shards",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "crymas:block/slush_shards",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "crymas:block/slush_shards",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "crymas:block/slush_shards"
+    },
+    "facing=west": {
+      "model": "crymas:block/slush_shards",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

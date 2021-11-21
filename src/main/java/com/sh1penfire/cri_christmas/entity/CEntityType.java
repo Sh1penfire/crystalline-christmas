@@ -17,6 +17,8 @@ public class CEntityType {
         }
     }, SpawnGroup.MISC).setDimensions(0.5f, 0.5f).maxTrackingRange(4).trackingTickInterval(20));
 
+    //public static final EntityType<SoulstrikenArrowEntity> SOULSTRIKEN_ARROW = register("soulstriken_arrow", EntityType.Builder.create(SoulstrikenArrowEntity::new, SpawnGroup.MISC).size(0.5F, 0.5F).setCustomClientFactory(SoulstrikenArrowEntity::new));
+
     private static <T extends Entity> EntityType<T> register(String id, EntityType.Builder<T> type) {
         return Registry.register(Registry.ENTITY_TYPE, id, type.build(id));
     }

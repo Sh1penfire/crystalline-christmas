@@ -1,3 +1,6 @@
 {
-  "parent": "crymas:block/slush_shards"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "crymas:blocks/slush_shards"
+  }
 }

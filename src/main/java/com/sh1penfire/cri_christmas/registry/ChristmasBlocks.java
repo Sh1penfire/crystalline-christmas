@@ -1,10 +1,9 @@
 package com.sh1penfire.cri_christmas.registry;
 
 import com.sh1penfire.cri_christmas.Christmas;
+import com.sh1penfire.cri_christmas.block.SlushShard;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -34,7 +33,23 @@ public class ChristmasBlocks {
         defaults()
     ),
 
-    SLUSH_SHARD = registerBlock("slush_shards", new Block(FabricBlockSettings.of(Material.WOOL).breakByHand(true).hardness(1.25f).resistance(15).sounds(BlockSoundGroup.BONE)), defaults()),
+    SLUSH_SHARD = registerBlock("slush_shards", new SlushShard(7, 3, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
+
+    CRYSTALLINE_SLUSH_LARGE = registerBlock("slush_shards_large", new SlushShard(5, 3, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
+
+    CRYSTALLINE_SLUSH_MEDIUM = registerBlock("slush_shards_medium", new SlushShard(4, 3, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
+
+    CRYSTALLINE_SLUSH_SMALL = registerBlock("crystalline_slush_small", new SlushShard(3, 4, FabricBlockSettings.of(Material.AMETHYST).breakByHand(true).breakByHand(true).sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().ticksRandomly()), defaults()),
+
+    CANDYITE = registerBlock("candyite_ore",
+            new Block(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(3.0f, 3.0f)),
+            defaults()
+    ),
+
+    DEEPSLATE_CANDYITE = registerBlock("deepslate_candyite_ore",
+            new OreBlock(FabricBlockSettings.copyOf(CANDYITE)),
+            defaults()
+    ),
 
     CANDYCANE_BLOCK_RED = registerBlock("candycane_block_red",
         new Block(FabricBlockSettings.of(Material.WOOD).breakByHand(true).hardness(1.25f).resistance(15).sounds(BlockSoundGroup.BONE)),
