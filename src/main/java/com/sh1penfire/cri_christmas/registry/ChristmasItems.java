@@ -28,6 +28,17 @@ public class ChristmasItems {
 
     public static List<ItemBlockEntry> MODDEDBLOCK_ITEMS = new ArrayList<ItemBlockEntry>();
     public static List<ItemEntry> MOD_ITEMS = new ArrayList<ItemEntry>();
+
+    public static final Item
+
+    CANDY_CANE = new WhipItem(ToolMaterials.WOOD, 5, 1f, new Item.Settings().group(ItemGroup.COMBAT)){{}},
+
+    CANDY_CANE_LANCE = new SwordItem(ToolMaterials.WOOD, 5, 1f, new Item.Settings().group(ItemGroup.COMBAT)){{}},
+
+    CANDY_CANE_GLAIVE = registerItem("candy_cane_glaive", new SwordItem(ToolMaterials.WOOD, 5, 1f, new Item.Settings().group(ItemGroup.COMBAT))),
+
+    ICY_GLAIVE = registerItem("icy_glaive", new SwordItem(ToolMaterials.WOOD, 5, 1f, new Item.Settings().group(ItemGroup.COMBAT)));
+
     //slush weapons
     public static final SnowballLauncherItem WOOD_SNOWBALL_GUN = new SnowballLauncherItem(new Item.Settings().group(ItemGroup.COMBAT)){{
 
@@ -35,9 +46,7 @@ public class ChristmasItems {
 
     public static final Item
 
-    CANDY_CANE = new WhipItem(ToolMaterials.WOOD, 5, 1f, new Item.Settings().group(ItemGroup.COMBAT)){{}},
-
-    CANDY_CANE_LANCE = new SwordItem(ToolMaterials.WOOD, 5, 1f, new Item.Settings().group(ItemGroup.COMBAT)){{}},
+    ICY_DAGGER = registerItem("icy_dagger", new ThrowingKnifeItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(16))),
 
     //Slush Blaster Ammo
     ICEBALL = new SnowballItem(new Item.Settings().group(ItemGroup.COMBAT).maxCount(16)),

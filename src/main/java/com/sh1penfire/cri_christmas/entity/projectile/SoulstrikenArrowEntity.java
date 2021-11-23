@@ -24,18 +24,18 @@ public class SoulstrikenArrowEntity extends PersistentProjectileEntity {
     }
 
     public SoulstrikenArrowEntity(World world, LivingEntity owner) {
-        super(CEntityType.SOULSTRIKEN_ARROW, owner, world);
+        super(EntityType.ARROW, owner, world);
     }
 
     public SoulstrikenArrowEntity(World world, double x, double y, double z) {
-        super(CEntityType.SOULSTRIKEN_ARROW, x, y, z, world);
+        super(EntityType.ARROW, x, y, z, world);
     }
 
     @Override
     public void tick() {
         super.tick();
         if (this.world.isClient && !this.inGround) {
-            this.world.addParticle(ParticleTypes.SOUL, this.getX(), this.getY(), this.getZ(), getVelocity().x * 0.3f, 1, getVelocity().z * 0.3f);
+            this.world.addParticle(ParticleTypes.SOUL, this.getX(), this.getY(), this.getZ(), getVelocity().x * -0.3f, 1, getVelocity().z * -0.3f);
         }
     }
 

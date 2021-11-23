@@ -18,7 +18,7 @@ public class SoulstrikenArrow extends ArrowItem {
     @Override
 
     public PersistentProjectileEntity createArrow(World world, ItemStack stack, LivingEntity shooter) {
-        SoulstrikenArrowEntity arrowEntity = new SoulstrikenArrowEntity(CEntityType.SOULSTRIKEN_ARROW, world);
+        SoulstrikenArrowEntity arrowEntity = new SoulstrikenArrowEntity(world, shooter);
         return arrowEntity;
     }
 }

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  S",
+    "WS ",
+    "SW "
+  ],
+  "key": {
+    "S": {
+      "item": "crymas:slush_shard"
+    },
+    "W": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "crymas:icy_dagger",
+    "count": 8
+  }
+}
+

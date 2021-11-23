@@ -3,8 +3,10 @@ package com.sh1penfire.cri_christmas.block;
 import com.google.common.collect.ImmutableMap;
 import com.sh1penfire.cri_christmas.registry.ChristmasBlocks;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -13,8 +15,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
+import net.minecraft.util.*;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -27,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 import java.util.function.Function;
 
-public class SlushShard extends Block {
+public class SlushShard extends Block implements BlockEntityProvider {
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final DirectionProperty FACING = Properties.FACING;
@@ -48,6 +50,13 @@ public class SlushShard extends Block {
         this.SOUTH_SHAPE = Block.createCuboidShape(xzOffset, xzOffset, 0.0, 16 - xzOffset, 16 - xzOffset, height);
         this.EAST_SHAPE = Block.createCuboidShape(0.0, xzOffset, xzOffset, height, 16 - xzOffset, 16 - xzOffset);
         this.WEST_SHAPE = Block.createCuboidShape(16 - height, xzOffset, xzOffset, 16.0, 16 - xzOffset, 16 - xzOffset);
+    }
+
+
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        return super.onUse(state, world, pos, player, hand, hit);
     }
 
     @Override
@@ -150,5 +159,11 @@ public class SlushShard extends Block {
 
     public static boolean canGrowIn(BlockState state) {
         return (state.isAir() || state.isOf(Blocks.WATER) && state.getFluidState().getLevel() == 8);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return null;
     }
 }
